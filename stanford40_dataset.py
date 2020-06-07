@@ -52,7 +52,11 @@ class Stanford40Dataset(Dataset):
 
 		image_path = os.path.join(jpeg_path,image_name)
 		image = Image.open(image_path)
-		label = self.labels_dict[image_name]
+		if image.mode != 'RGB':
+			rgbimg = Image.new("RGB", image.size)
+			rgbimg.paste(image)
+			image = rgbimg
+		label = self.labels_dict[image_name].squeeze()
 
 		if self.transform != None:
 			image = self.transform(image)

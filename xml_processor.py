@@ -1,3 +1,5 @@
+#adopted from https://github.com/coby9241/ssd_keras_test/blob/master/get_data_from_XML.py
+
 import numpy as np
 import os
 from xml.etree import ElementTree
